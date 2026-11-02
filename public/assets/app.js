@@ -744,7 +744,7 @@ const EMAIL_RE = /^[^@\s<>"']+@[^@\s<>"']+\.[^@\s<>"']+$/;
 
 function applyConfigText() {
   document.querySelectorAll('[data-price]').forEach(el => { el.textContent = fmtPrice(); });
-  document.querySelectorAll('[data-site-url]').forEach(el => { el.textContent = CONFIG.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') || 'TWOJA-DOMENA.pl'; });
+  document.querySelectorAll('[data-site-url]').forEach(el => { el.textContent = CONFIG.siteUrl.replace(/^https?:\/\//, '').replace(/\/$/, '') || 'parkowanielodz.pl'; });
   document.querySelectorAll('[data-seller]').forEach(el => {
     const k = el.dataset.seller;
     if (k === 'nipLine') el.textContent = CONFIG.seller.nip ? `, NIP: ${CONFIG.seller.nip}` : '';
