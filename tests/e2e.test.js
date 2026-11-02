@@ -37,7 +37,7 @@ const server = http.createServer((req, res) => {
   const p = path.join(SITE, rel);
   if (!p.startsWith(SITE + path.sep) || !fs.existsSync(p) || fs.statSync(p).isDirectory()) { res.writeHead(404); return res.end('nf'); }
   let body = fs.readFileSync(p);
-  if (rel === '/assets/config.js' && MODE.paymentUrl) body = Buffer.from(body.toString('utf8').replace("paymentUrl: '',", `paymentUrl: '${MODE.paymentUrl}',`));
+  if (rel === '/assets/config.js') body = Buffer.from(body.toString('utf8').replace(/paymentUrl: '[^']*',/, `paymentUrl: '${MODE.paymentUrl || ''}',`));
   res.writeHead(200, { 'Content-Type': TYPES[path.extname(p)] || 'application/octet-stream', 'Cache-Control': 'no-store', ...HEADERS });
   res.end(body);
 });
